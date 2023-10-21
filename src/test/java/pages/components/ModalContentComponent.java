@@ -1,12 +1,13 @@
 package pages.components;
 
 import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ModalContentComponent {
+
+    String successSubmissionText = "Thanks for submitting the form";
 
     SelenideElement modal = $(".modal-content"),
             closeButton = $("#closeLargeModal"),
@@ -19,8 +20,8 @@ public class ModalContentComponent {
         return this;
     }
 
-    public ModalContentComponent successFormSubmissionText(String value){
-        Text.shouldHave(text(value));
+    public ModalContentComponent successFormSubmissionText(){
+        Text.shouldHave(text(successSubmissionText));
         return this;
     }
 
@@ -29,9 +30,8 @@ public class ModalContentComponent {
         return this;
     }
 
-    public ModalContentComponent notHaveFilledForm(String value){
-        bodyPage.shouldNotHave(text(value));
-        return this;
+    public void notHaveFilledForm(){
+        bodyPage.shouldNotHave(text(successSubmissionText));
     }
 
     public ModalContentComponent clickCloseButton(){

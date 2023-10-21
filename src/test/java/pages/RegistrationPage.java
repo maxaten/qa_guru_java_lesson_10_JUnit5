@@ -3,7 +3,6 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 import utils.cutom.FooterAndAdd;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -12,6 +11,8 @@ import static com.codeborne.selenide.Selenide.open;
 public class RegistrationPage {
 
     String uri = "/automation-practice-form";
+    String title = "Student Registration Form";
+    String pathImage = "img/";
 
     CalendarComponent calendar = new CalendarComponent();
     FooterAndAdd footerAndAdd = new FooterAndAdd();
@@ -36,8 +37,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage checkTitle(String value){
-        titleLabel.shouldHave(text(value));
+    public RegistrationPage checkTitle(){
+        titleLabel.shouldHave(text(title));
         return this;
     }
 
@@ -88,7 +89,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setImage(String value){
-        image.uploadFromClasspath(value);
+        image.uploadFromClasspath(pathImage + value);
         return this;
     }
 
