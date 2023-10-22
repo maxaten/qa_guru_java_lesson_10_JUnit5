@@ -18,7 +18,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     @ParameterizedTest(name = "Заполнение всех полей в форме регистрации")
     @Tags({@Tag("SMOKE"), @Tag("WEB"), @Tag("POSITIVE"), @Tag("REGRESS")})
     @CsvFileSource(resources = "/userData.csv")
-    void fillForm(String firstName, String lastName, String email, String gender, String phoneNumber, String day,
+    void fillFormTest(String firstName, String lastName, String email, String gender, String phoneNumber, String day,
                   String  month, String year, String subject1, String subject2, String hobby1, String hobby2,
                   String hobby3, String image, String currentAddress, String state, String city) {
 
@@ -60,7 +60,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     @Tags({@Tag("WEB"),@Tag("POSITIVE")})
     @CsvSource(value = {"Bruce, Wayne, Male, 7999999999, 10, November, 1990",
                         "Barry, Allen, Female, 8945612345, 12, October, 1960"})
-    void fillingRequiredFields(String firstName, String lastName, String gender,
+    void fillingRequiredFieldsTest(String firstName, String lastName, String gender,
                                String phoneNumber, String day, String month, String year){
         registrationPage.openPage()
                 .checkTitle()
@@ -81,10 +81,10 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     }
 
 
-    @Tags({@Tag("SMOKE"), @Tag("API"),@Tag("NEGATIVE")})
+    @Tags({@Tag("SMOKE"),@Tag("NEGATIVE")})
     @ParameterizedTest(name = "Проверка регистрации с именем {0}")
     @ValueSource(strings = {"Anna", "Maksim"})
-    void blankFieldsForm(String firstName){
+    void blankFieldsFormTest(String firstName){
         registrationPage.openPage()
                 .checkTitle()
                 .deleteFooterAndAdd()
